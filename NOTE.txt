@@ -1,0 +1,18 @@
+il cliente joina la stanza quando passa a got user media (cioè quando la getDisplayMedia va a buon fine)
+
+sempre all'atto del passaggio del cliente a got user media, dopo la join della stanza, viene fatta la ricerca di un tecnico available
+
+un tecnico è inutile che la fa la emit di got user media, fa na emit di essere passato ad available quando preme il tasto start
+il tasto start si abilita solo quando la getUserMedia va a buon fine
+
+solo i cambi di stato del tecnico li memorizziamo nel db (da available a busy, e viceversa), 
+quelli del cliente non dovrebbero servire, dato che la disponibilità a comunicare del cliente è segnalata semplicemente 
+dall'esistenza della richiesta di assistenza pending
+
+quando il tecnico passa ad available, cerca richieste di assistenza pending
+
+forse è meglio se mettiamo a pending lo stato della RichiestaAssistenza solo quando il cliente ha fatto emit di got user media, 
+perchè potrebbe accadere che il cliente mette nel db una RichiestaAssistenza, che di default ha stato pari a pending, 
+ma poi magari il cliente ha problemi a fare getDisplayMedia o getUserMedia, un tecnico si connette, passa ad available, 
+cerca richieste pending, becca la richiesta del cliente che ha problemi a fare getCose, joina la stanza, 
+ma non può comunicare con il cliente via WebRTC

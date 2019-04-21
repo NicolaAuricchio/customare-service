@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="mt-4">Contattaci</h1>
+  <p class="lead mb-3">Welcome <%= name %> CLIENTE</p>
+  <a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+  <form method="POST" action="/<%= hash %>">
+    <div class="form-group">
+      <p></p>
+      <label for="dropmenu">
+        Selezionare la release per cui si richiede assistenza:</label>
+      <div class="dropdown">
+        <select class="form-control" name="swSelezionato">
+          <option selected disabled hidden style="display: none" value=""></option>
+          <% relAcquistate.forEach( rel => {%>
+          <option value="<%= rel %>"><%= rel %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <p></p>
+
+        <label for="comment">Inserisci una breve descrizione del problema riscontrato:</label>
+        <textarea class="form-control" rows="8" id="comment" name="descrizione" style="resize:none"></textarea>
+      </div>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" />
+      <label class="form-check-label" for="exampleCheck1"><small class="form-text text-muted">Dichiaro di aver preso
+          visione dell'informativa sulla privacy e
+          consento il trattamento dei dati forniti conformemente a quanto previsto
+          dall'ART 1890/12.</small></label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

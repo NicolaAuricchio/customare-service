@@ -1,0 +1,56 @@
+<!-- <div class="container">
+  <h1 class="mt-4">Dashboard</h1>
+  <p class="lead mb-3">Welcome <%= name %> TECNICO</p>
+  <a href="/users/logout" class="btn btn-secondary">Logout</a>
+</div> -->
+<div id="esterno">
+	<div id="sinistra">
+		<div id="sezione_remote_video">
+			<video id="remoteVideo" autoplay poster="/img/pressStart.png"></video>
+		</div>
+		<div id="sezione_local_video">
+			<video id="localVideo" autoplay muted="muted"></video>
+		</div>
+	</div>
+	<div id="destra">
+		<div id="chat">
+			<div id="sezione_tasti_startnext_stop">
+				<button id="startNextButton" class="button green" disabled>Start</button>
+				<button id="stopButton" class="button red" disabled>Stop</button>
+				<div id="num_utenti">
+					Users Online:
+				</div>
+			</div>
+			<div id="sezione_textarea_receive">
+				<textarea id="receiveTextarea" disabled></textarea>
+				<canvas id="canvas" style="position:absolute;top:12%;left:50.8%;" disabled></canvas>
+				<img id="canvasimg" src="/img/trasparente.png" style="position:absolute;top:12%;left:50.8%;pointer-events:none;">
+        		<div id="chooseColor">canvas brush color:
+					<div id="green" onclick="color(this)"></div>
+					<div id="blue" onclick="color(this)"></div>
+					<div id="red" onclick="color(this)"></div>
+					<div id="yellow" onclick="color(this)"></div>
+					<div id="orange" onclick="color(this)"></div>
+					<div id="black" onclick="color(this)"></div>
+					<div id="white" onclick="color(this)"></div>
+					<button id="clearButton">clear canvas</button>
+				</div>
+
+			</div>
+			<div id="sezione_scrivere_sezione_send">
+				<div id="sezione_bottone_send">
+					<button id="sendButton" class="gray button" disabled>Send</button>
+				</div>
+				<div id="sezione_scrivere">
+					<textarea id="sendTextarea" disabled
+					onkeypress="return onPressEnter()"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/tecnicoCS.js"></script>
+<link href="/css/structure.css" rel="stylesheet" type="text/css">
